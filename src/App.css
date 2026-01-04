@@ -1,19 +1,66 @@
-/* --- ADVENTURE THEME COLORS --- */
+/* --- THEME COLORS --- */
 :root {
-  --kid-bg: #004c68;     /* Requested Deep Blue */
-  --kid-accent: #007fa5;  /* Requested Medium Blue */
-  --kid-gold: #FFD700;    /* Playful Gold */
+  --kid-bg: #004c68;
+  --kid-accent: #007fa5;
+  --kid-gold: #FFD700;
   --kid-white: #FFFFFF;
 }
 
+/* --- VIEWPORT & SWIPE LOCK --- */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--kid-bg);
+  /* Prevents "pull-to-refresh" freezing the book */
+  overscroll-behavior: none; 
+}
+
+.page {
+  touch-action: none !important;
+  -webkit-user-drag: none;
+}
+
+.app-viewport {
+  width: 100vw;
+  height: 100dvh; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--kid-bg);
+  overflow: hidden;
+}
+
+.studio-background {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, var(--kid-accent), var(--kid-bg));
+}
+
+.book-frame {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- PAGE 12 ADVENTURE STYLE --- */
 .adventure-page {
   width: 100%; height: 100%;
   background: radial-gradient(circle at center, var(--kid-accent), var(--kid-bg));
   display: flex; position: relative;
   color: var(--kid-white);
-  font-family: 'Fredoka', 'Comic Sans MS', sans-serif; /* Rounded, kid-friendly font */
+  font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
   overflow: hidden;
-  pointer-events: auto !important;
+  /* Keeps Page 12 interactive */
+  pointer-events: auto !important; 
+  touch-action: none;
 }
 
 .islamic-stars {
@@ -22,68 +69,57 @@
   pointer-events: none;
 }
 
-.adventure-col {
-  flex: 1; padding: 45px; display: flex; flex-direction: column; z-index: 20;
-}
+.adventure-col { flex: 1; padding: 40px; display: flex; flex-direction: column; z-index: 20; }
 
-/* --- HEADERS --- */
-.bismillah-text { font-size: 16px; color: var(--kid-gold); display: block; margin-bottom: 5px; text-shadow: 0 0 10px rgba(255,215,0,0.3); }
-.hero-title { font-size: 40px; font-weight: 900; margin: 0; line-height: 0.9; }
-.hero-subtitle { font-size: 24px; color: var(--kid-white); opacity: 0.8; margin: 0; }
+.bismillah-text { font-size: 14px; color: var(--kid-gold); display: block; margin-bottom: 5px; text-shadow: 0 0 10px rgba(255,215,0,0.3); }
+.hero-title { font-size: 32px; font-weight: 900; margin: 0; line-height: 0.9; }
+.hero-subtitle { font-size: 20px; color: var(--kid-white); opacity: 0.8; margin: 0; }
 
 .date-cloud {
-  background: rgba(255,255,255,0.15); padding: 10px 20px;
-  border-radius: 30px; display: inline-flex; align-items: center; gap: 10px; margin-top: 20px;
+  background: rgba(255,255,255,0.15); padding: 8px 15px;
+  border-radius: 30px; display: inline-flex; align-items: center; gap: 10px; margin-top: 15px;
   backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2);
 }
 
 .child-input {
   background: rgba(255,255,255,0.1); border: 2px solid transparent;
-  color: white; border-radius: 15px; outline: none;
-  pointer-events: auto !important; cursor: text !important;
-  font-family: inherit;
+  color: white; border-radius: 12px; outline: none;
+  /* High priority for typing */
+  pointer-events: auto !important; 
+  cursor: text !important;
 }
 
 .child-input:focus { background: rgba(255,255,255,0.2); border-color: var(--kid-gold); }
 
-/* --- MISSION LIST --- */
-.mission-label-row { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
-.mission-label { font-size: 14px; font-weight: 900; letter-spacing: 2px; }
-.icon-glow { font-size: 24px; filter: drop-shadow(0 0 5px var(--kid-gold)); }
+.mission-label-row { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+.mission-label { font-size: 12px; font-weight: 900; letter-spacing: 1.5px; }
+.mission-list { display: flex; flex-direction: column; gap: 10px; }
+.mission-item { display: flex; align-items: center; gap: 12px; background: rgba(0,0,0,0.1); padding: 8px; border-radius: 15px; }
+.mission-bullet { font-size: 18px; }
+.mission-text { flex: 1; background: transparent; border: none; font-size: 14px; color: white; outline: none; }
 
-.mission-list { display: flex; flex-direction: column; gap: 12px; }
-.mission-item { display: flex; align-items: center; gap: 15px; background: rgba(0,0,0,0.1); padding: 10px; border-radius: 20px; }
-.mission-bullet { font-size: 20px; filter: drop-shadow(0 0 3px white); }
-.mission-text { flex: 1; background: transparent; border: none; font-size: 16px; }
-
-/* --- PRAYER JOURNEY --- */
-.prayer-path { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.prayer-path { display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px; }
 .prayer-step {
-  display: flex; align-items: center; gap: 20px;
-  padding: 12px 25px; background: rgba(255,255,255,0.1); border-radius: 50px;
-  cursor: pointer; transition: 0.3s; border: 2px solid rgba(255,255,255,0.05);
+  display: flex; align-items: center; gap: 15px;
+  padding: 10px 20px; background: rgba(255,255,255,0.1); border-radius: 50px;
+  cursor: pointer; transition: 0.3s;
 }
-.prayer-step.step-complete { background: var(--kid-white); color: var(--kid-bg); transform: translateX(10px); }
+.prayer-step.step-complete { background: var(--kid-white); color: var(--kid-bg); transform: translateX(8px); }
 
-.step-circle { width: 30px; height: 30px; border: 3px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.step-circle { width: 25px; height: 25px; border: 2px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 .prayer-step.step-complete .step-circle { border-color: var(--kid-bg); background: var(--kid-gold); }
 
-.step-name { font-weight: 900; letter-spacing: 2px; font-size: 13px; }
-
-/* --- REFLECTIONS --- */
-.heart-textarea { flex: 1; padding: 20px; font-size: 16px; resize: none; border-radius: 25px; background: rgba(0,0,0,0.15); }
+.heart-textarea { flex: 1; padding: 15px; font-size: 14px; resize: none; border-radius: 20px; background: rgba(0,0,0,0.15); color: white; border: none; outline: none; }
 .grow-box { flex-grow: 1; display: flex; flex-direction: column; }
 
 .adventure-reset {
-  margin-top: 20px; background: var(--kid-gold); border: none;
-  color: var(--kid-bg); padding: 15px; border-radius: 50px;
-  font-weight: 900; font-size: 12px; cursor: pointer;
-  box-shadow: 0 5px 0 #b7950b; transition: 0.2s;
+  margin-top: 15px; background: var(--kid-gold); border: none;
+  color: var(--kid-bg); padding: 12px; border-radius: 50px;
+  font-weight: 900; font-size: 10px; cursor: pointer;
+  box-shadow: 0 4px 0 #b7950b;
 }
-
-.adventure-reset:active { transform: translateY(3px); box-shadow: 0 2px 0 #b7950b; }
 
 @media (max-width: 768px) {
   .adventure-page { flex-direction: column; overflow-y: auto; }
-  .adventure-col { padding: 35px 25px; }
+  .adventure-col { padding: 25px; }
 }
