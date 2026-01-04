@@ -1,0 +1,58 @@
+.page12-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Positioning the Date field [cite: 143] */
+.date-input {
+  position: absolute;
+  top: 5.5%;
+  right: 5%;
+  width: 25%;
+  border: none;
+  background: transparent;
+  text-align: center;
+}
+
+/* Positioning the To Do List [cite: 134] */
+.todo-area {
+  position: absolute;
+  top: 15%;
+  left: 12%;
+  width: 76%;
+  height: 20%;
+  line-height: 2.2; /* This matches the text to the lines */
+  background: transparent;
+  border: none;
+  resize: none;
+  padding: 0;
+}
+
+/* Salah Tracker Group [cite: 136-141] */
+.salah-tracker-container {
+  position: absolute;
+  top: 48%;
+  left: 15%;
+  width: 70%;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns for the prayers */
+  gap: 15px;
+}
+
+.salah-item {
+  display: flex;
+  align-items: center;
+}
+
+/* The Reset Button [cite: 142] */
+.reset-btn-custom {
+  position: absolute;
+  bottom: 6.5%;
+  left: 20%;
+  width: 60%;
+  height: 40px;
+  background-color: transparent; /* Makes it sit over your drawn button */
+  border: none;
+  cursor: pointer;
+}
