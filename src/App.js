@@ -3,7 +3,6 @@ import HTMLFlipBook from 'react-pageflip';
 import Page12 from './components/Page12';
 import './App.css';
 
-// --- UNIVERSAL GESTURE FIX ---
 const PageWrapper = forwardRef((props, ref) => {
   return (
     <div 
@@ -12,10 +11,8 @@ const PageWrapper = forwardRef((props, ref) => {
       style={{ 
         width: '100%', 
         height: '100%', 
-        pointerEvents: 'auto', 
-        backgroundColor: '#004c68',
-        /* Prevents browser from interfering with swipes */
-        touchAction: 'none' 
+        pointerEvents: 'auto', // Important for typing
+        backgroundColor: '#004c68' // Prevents white flicker
       }}
     >
       {props.children}
@@ -43,9 +40,8 @@ function App() {
             disableFlipByClick={true} 
             useMouseEvents={true}      
             mobileScrollSupport={true}
-            /* Lower distance = easier to flip on mobile */
-            swipeDistance={10} 
-            showPageCorners={false} 
+            swipeDistance={30}
+            showPageCorners={false} // Disabled corners to prevent freezing
             clickEventForward={false} 
             usePortrait={true}
             startPage={0}
@@ -55,13 +51,7 @@ function App() {
               <PageWrapper key={num}>
                 <img 
                   src={`/pages/page${num}.jpg`} 
-                  style={{
-                    width:'100%', 
-                    height:'100%', 
-                    /* Allows swipe gestures to reach the book library */
-                    pointerEvents: 'none',
-                    userSelect: 'none'
-                  }} 
+                  style={{width:'100%', height:'100%', pointerEvents: 'none'}} 
                   alt={`Page ${num}`} 
                 />
               </PageWrapper>

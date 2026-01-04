@@ -6,7 +6,7 @@
   --kid-white: #FFFFFF;
 }
 
-/* --- VIEWPORT & SWIPE LOCK --- */
+/* --- VIEWPORT FIX --- */
 html, body, #root {
   margin: 0;
   padding: 0;
@@ -14,18 +14,11 @@ html, body, #root {
   height: 100%;
   overflow: hidden;
   background-color: var(--kid-bg);
-  /* Prevents "pull-to-refresh" freezing the book */
-  overscroll-behavior: none; 
-}
-
-.page {
-  touch-action: none !important;
-  -webkit-user-drag: none;
 }
 
 .app-viewport {
   width: 100vw;
-  height: 100dvh; 
+  height: 100dvh; /* Dynamic viewport fix for mobile white bars */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,9 +51,7 @@ html, body, #root {
   color: var(--kid-white);
   font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
   overflow: hidden;
-  /* Keeps Page 12 interactive */
-  pointer-events: auto !important; 
-  touch-action: none;
+  pointer-events: auto !important;
 }
 
 .islamic-stars {
@@ -84,9 +75,7 @@ html, body, #root {
 .child-input {
   background: rgba(255,255,255,0.1); border: 2px solid transparent;
   color: white; border-radius: 12px; outline: none;
-  /* High priority for typing */
-  pointer-events: auto !important; 
-  cursor: text !important;
+  pointer-events: auto !important; cursor: text !important;
 }
 
 .child-input:focus { background: rgba(255,255,255,0.2); border-color: var(--kid-gold); }
