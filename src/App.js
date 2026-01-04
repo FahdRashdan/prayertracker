@@ -14,24 +14,9 @@ const PageWrapper = forwardRef((props, ref) => {
 function App() {
   const bookRef = useRef();
 
-  // Navigation functions
-  const goNext = () => {
-    bookRef.current.pageFlip().flipNext();
-  };
-
-  const goPrev = () => {
-    bookRef.current.pageFlip().flipPrev();
-  };
-
   return (
     <div className="app-viewport">
       <div className="studio-background">
-        
-        {/* Left Navigation Arrow */}
-        <button className="nav-btn left" onClick={goPrev}>
-          ‹
-        </button>
-
         <div className="book-frame">
           <HTMLFlipBook 
             ref={bookRef} 
@@ -43,10 +28,16 @@ function App() {
             minHeight={400} 
             maxHeight={1100}
             showCover={true}
+            // Essential: Allows you to click inputs without the page flipping
             disableFlipByClick={true} 
-            clickEventForward={false}
+            // Enables mouse and touch dragging for swiping
             useMouseEvents={true}
-            showPageCorners={true} // Visual hint for users
+            // Better mobile gesture support
+            mobileScrollSupport={true}
+            // How far a user must swipe to trigger a page turn
+            swipeDistance={30}
+            // Shows a visual page curl at the corner to help users find the swipe area
+            showPageCorners={true} 
             className="professional-book-shadow"
           >
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((num) => (
@@ -60,12 +51,6 @@ function App() {
             </PageWrapper>
           </HTMLFlipBook>
         </div>
-
-        {/* Right Navigation Arrow */}
-        <button className="nav-btn right" onClick={goNext}>
-          ›
-        </button>
-
       </div>
     </div>
   );
