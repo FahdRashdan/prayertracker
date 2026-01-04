@@ -11,8 +11,10 @@ const PageWrapper = forwardRef((props, ref) => {
       style={{ 
         width: '100%', 
         height: '100%', 
-        pointerEvents: 'auto', // Important for typing
-        backgroundColor: '#004c68' // Prevents white flicker
+        pointerEvents: 'auto',
+        backgroundColor: '#004c68',
+        /* THE FIX: Prevents browser scrolling from blocking the swipe */
+        touchAction: 'none' 
       }}
     >
       {props.children}
@@ -40,8 +42,9 @@ function App() {
             disableFlipByClick={true} 
             useMouseEvents={true}      
             mobileScrollSupport={true}
-            swipeDistance={30}
-            showPageCorners={false} // Disabled corners to prevent freezing
+            /* THE FIX: Lower number makes swiping much easier */
+            swipeDistance={15} 
+            showPageCorners={false} 
             clickEventForward={false} 
             usePortrait={true}
             startPage={0}
@@ -51,14 +54,20 @@ function App() {
               <PageWrapper key={num}>
                 <img 
                   src={`/pages/page${num}.jpg`} 
-                  style={{width:'100%', height:'100%', pointerEvents: 'none'}} 
+                  style={{
+                    width:'100%', 
+                    height:'100%', 
+                    /* THE FIX: Allows gestures to pass through the image */
+                    pointerEvents: 'none' 
+                  }} 
                   alt={`Page ${num}`} 
                 />
               </PageWrapper>
             ))}
 
             <PageWrapper>
-              <Page12 />
+              {/* Passing the bookRef so Page 12 can control the flip */}
+              <Page12 bookRef={bookRef} />
             </PageWrapper>
           </HTMLFlipBook>
         </div>
