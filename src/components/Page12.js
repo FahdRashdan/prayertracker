@@ -91,14 +91,14 @@ const Page12 = () => {
         style={{ ...textStyle, position: 'absolute', top: '75.6%', left: '13.5%', width: '74%', height: '11.8%', lineHeight: '1.92' }}
       />
 
-      {/* RESET BUTTON: Moved slightly left on Mobile */}
+      {/* RESET BUTTON: Shifted further left on Mobile */}
       <button 
         onClick={resetTracker} 
         style={{ 
             position: 'absolute', 
             bottom: '1.5%', 
-            // 2% on Desktop, shifted to 5% on Mobile for better alignment
-            right: isMobile ? '5%' : '2%', 
+            // Now shifted to 8% on Mobile to move it a bit more to the left
+            right: isMobile ? '8%' : '2%', 
             width: '12%', 
             height: '8%', 
             cursor: 'pointer', 
