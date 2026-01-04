@@ -1,84 +1,89 @@
-/* Full screen viewport reset */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* --- ADVENTURE THEME COLORS --- */
+:root {
+  --kid-bg: #004c68;     /* Requested Deep Blue */
+  --kid-accent: #007fa5;  /* Requested Medium Blue */
+  --kid-gold: #FFD700;    /* Playful Gold */
+  --kid-white: #FFFFFF;
+}
 
-.app-viewport {
-  width: 100vw;
-  height: 100vh;
+.adventure-page {
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at center, var(--kid-accent), var(--kid-bg));
+  display: flex; position: relative;
+  color: var(--kid-white);
+  font-family: 'Fredoka', 'Comic Sans MS', sans-serif; /* Rounded, kid-friendly font */
   overflow: hidden;
-  background-color: #050505;
+  pointer-events: auto !important;
 }
 
-.studio-background {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: radial-gradient(circle at center, #1e2b3a 0%, #050505 100%);
+.islamic-stars {
+  position: absolute; inset: 0; opacity: 0.15;
+  background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+  pointer-events: none;
 }
 
-.book-frame {
-  height: 80vh; 
-  aspect-ratio: 1100 / 780;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translateY(-8vh); 
-  transition: transform 0.3s ease-out;
+.adventure-col {
+  flex: 1; padding: 45px; display: flex; flex-direction: column; z-index: 20;
 }
 
-.professional-book-shadow {
-  box-shadow: 0 60px 120px rgba(0, 0, 0, 0.95), 0 25px 50px rgba(0, 0, 0, 0.8);
-  border-radius: 4px;
+/* --- HEADERS --- */
+.bismillah-text { font-size: 16px; color: var(--kid-gold); display: block; margin-bottom: 5px; text-shadow: 0 0 10px rgba(255,215,0,0.3); }
+.hero-title { font-size: 40px; font-weight: 900; margin: 0; line-height: 0.9; }
+.hero-subtitle { font-size: 24px; color: var(--kid-white); opacity: 0.8; margin: 0; }
+
+.date-cloud {
+  background: rgba(255,255,255,0.15); padding: 10px 20px;
+  border-radius: 30px; display: inline-flex; align-items: center; gap: 10px; margin-top: 20px;
+  backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2);
 }
 
-/* Modal Styles */
-.modal-overlay {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.85);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  backdrop-filter: blur(8px);
+.child-input {
+  background: rgba(255,255,255,0.1); border: 2px solid transparent;
+  color: white; border-radius: 15px; outline: none;
+  pointer-events: auto !important; cursor: text !important;
+  font-family: inherit;
 }
 
-.modal-box {
-  background: #1e2b3a;
-  padding: 30px;
-  border-radius: 20px;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-  width: 90%;
-  max-width: 400px;
+.child-input:focus { background: rgba(255,255,255,0.2); border-color: var(--kid-gold); }
+
+/* --- MISSION LIST --- */
+.mission-label-row { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+.mission-label { font-size: 14px; font-weight: 900; letter-spacing: 2px; }
+.icon-glow { font-size: 24px; filter: drop-shadow(0 0 5px var(--kid-gold)); }
+
+.mission-list { display: flex; flex-direction: column; gap: 12px; }
+.mission-item { display: flex; align-items: center; gap: 15px; background: rgba(0,0,0,0.1); padding: 10px; border-radius: 20px; }
+.mission-bullet { font-size: 20px; filter: drop-shadow(0 0 3px white); }
+.mission-text { flex: 1; background: transparent; border: none; font-size: 16px; }
+
+/* --- PRAYER JOURNEY --- */
+.prayer-path { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.prayer-step {
+  display: flex; align-items: center; gap: 20px;
+  padding: 12px 25px; background: rgba(255,255,255,0.1); border-radius: 50px;
+  cursor: pointer; transition: 0.3s; border: 2px solid rgba(255,255,255,0.05);
+}
+.prayer-step.step-complete { background: var(--kid-white); color: var(--kid-bg); transform: translateX(10px); }
+
+.step-circle { width: 30px; height: 30px; border: 3px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.prayer-step.step-complete .step-circle { border-color: var(--kid-bg); background: var(--kid-gold); }
+
+.step-name { font-weight: 900; letter-spacing: 2px; font-size: 13px; }
+
+/* --- REFLECTIONS --- */
+.heart-textarea { flex: 1; padding: 20px; font-size: 16px; resize: none; border-radius: 25px; background: rgba(0,0,0,0.15); }
+.grow-box { flex-grow: 1; display: flex; flex-direction: column; }
+
+.adventure-reset {
+  margin-top: 20px; background: var(--kid-gold); border: none;
+  color: var(--kid-bg); padding: 15px; border-radius: 50px;
+  font-weight: 900; font-size: 12px; cursor: pointer;
+  box-shadow: 0 5px 0 #b7950b; transition: 0.2s;
 }
 
-.modal-title {
-  color: white;
-  font-weight: 700;
-  font-size: 18px;
-  margin-bottom: 25px;
-}
-
-.modal-buttons {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-}
-
-.btn-modal {
-  padding: 12px 25px;
-  border-radius: 10px;
-  border: none;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.btn-confirm { background: #e74c3c; color: white; }
-.btn-cancel { background: #34495e; color: white; }
+.adventure-reset:active { transform: translateY(3px); box-shadow: 0 2px 0 #b7950b; }
 
 @media (max-width: 768px) {
-  .book-frame { height: 82vh; width: 95vw; transform: translateY(-4vh); }
+  .adventure-page { flex-direction: column; overflow-y: auto; }
+  .adventure-col { padding: 35px 25px; }
 }
